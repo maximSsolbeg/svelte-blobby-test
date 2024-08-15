@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+import { Header, HeroSection, JoinSection } from "../components";
+
+</script>
+
+<div class="global-container" >
+    <Header/>
+    <main>
+        <HeroSection/>
+        <JoinSection/>
+    </main>
+</div>
+
+
+<style lang="scss">
+  .global-container {
+    min-height: calc(100vh - 24px);
+  }
+</style>

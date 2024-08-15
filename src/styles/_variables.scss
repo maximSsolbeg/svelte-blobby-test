@@ -1,0 +1,21 @@
+// Color Palette
+$black-primary: #0C0B0E;
+$dark: #0D0D0D;
+$white: #FFFFFF;
+$white-primary: #F2F1F4;
+
+$white-opacity-90: #FFFFFFE5; // rgba(255, 255, 255, 0.9)
+$white-opacity-80: #FFFFFFCC; // rgba(255, 255, 255, 0.8)
+$white-opacity-60: #FFFFFF99; // rgba(255, 255, 255, 0.6)
+$white-opacity-40: #FFFFFF66; // rgba(255, 255, 255, 0.4)
+$white-opacity-10: #FFFFFF1A; // rgba(255, 255, 255, 0.1)
+$white-opacity-15: #FFFFFF26; // rgba(255, 255, 255, 0.15)
+$white-opacity-5:  #FFFFFF0D; // rgba(255, 255, 255, 0.05)
+$white-opacity-1:  #f0f0f01a; // rgba(240, 240, 240, 0.1)
+$white-opacity-3:  #FFFFFF08; // rgba(240, 240, 240, 0.03)
+
+$grey: #D3CCE0;
+
+$purple: #7D42EC;
+$purple-darker: darken($purple, 10%);
+$purple-thin: #E8CEFF0D;

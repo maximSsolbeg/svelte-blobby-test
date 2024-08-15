@@ -1,0 +1,9 @@
+@mixin spaceGrotesk($weight: 400) {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: $weight;
+}
+
+@mixin instrumentSans($weight: 400) {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: $weight;
+}

@@ -1,0 +1,104 @@
+@import 'normalize.css';
+@import 'variables';
+
+:root {
+  --white: #{$white};
+  --white-primary: #{$white-primary};
+  --white-opacity-90: #{$white-opacity-90};
+  --white-opacity-80: #{$white-opacity-80};
+  --white-opacity-60: #{$white-opacity-60};
+  --white-opacity-40: #{$white-opacity-40};
+  --white-opacity-10: #{$white-opacity-10};
+  --white-opacity-5: #{$white-opacity-5};
+  --white-opacity-3: #{$white-opacity-3};
+  --white-opacity-15: #{$white-opacity-15};
+  --black-primary: #{$black-primary};
+  --dark: #{$dark};
+  --white-opacity-1: #{$white-opacity-1};
+  --purple: #{$purple};
+  --purple-darker: #{$purple-darker};
+  --purple-thin: #{$purple-thin};
+
+}
+
+body {
+  max-width: 1680px;
+  margin: 0 auto;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  color: $white;
+  line-height: 1.5;
+  padding: 12px;
+  box-sizing: border-box;
+  background: $black-primary;
+  background-size: contain;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  font-weight: 400;
+}
+
+svg {
+  color: $white;
+}
+
+.button {
+  height: 46px;
+  background: none;
+  border: none;
+  color: $white-opacity-60;
+  cursor: pointer;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.6s;
+  border-radius: 22px;
+
+  &:hover {
+    transition: color 0.6s;
+  }
+
+  &:focus {
+    outline: none;
+    padding: 0 23px;
+    border: solid 1px #f0f0f05c;
+    color: $white;
+  }
+}
+
+.button-text {
+  &:hover {
+    color: $white;
+    background-color: #f0f0f01a;
+  }
+}
+
+.button-filled-pink {
+  background-color: $purple;
+  color: $white;
+  padding: 0 24px;
+  font-size: 14px;
+  transition: color 0.4s;
+
+  &:hover {
+    color: $white;
+    background-color: $purple-darker;
+    transition: background-color 0.6s;
+  }
+}
+
+.button-filled {
+  background-color: $white-opacity-10;
+  color: $grey;
+  padding: 0 24px;
+  font-size: 14px;
+  transition: color 0.4s;
+
+  &:hover {
+    color: $white;
+    background-color: $white-opacity-40;
+    transition: background-color 0.6s;
+  }
+}
