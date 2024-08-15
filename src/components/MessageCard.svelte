@@ -1,5 +1,5 @@
 <script>
-  import { Icon } from "../components";
+  import {Icon} from "../components";
 
   export let text = '';
   export let iconName = '';
@@ -9,17 +9,17 @@
     <p>{text}</p>
 
     <div class="message-card__icon-wrapper">
-        <Icon name={iconName} width="24" height="24" class="message-card__icon"/>
+        <Icon name={iconName} width="22" height="22" class="message-card__icon"/>
     </div>
 </div>
 
 <style lang="scss">
   @import '../styles/_mixins.scss';
 
-  .message-card{
+  .message-card {
     cursor: pointer;
     @include instrumentSans(400);
-    height: 269px;
+    height: 197px;
     flex: 1;
     border-radius: 28px;
     padding: 27px 36px 45px;
@@ -31,7 +31,14 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: left;
+
+    p {
+      @include desktopSmall {
+        margin-bottom: 0;
+      }
+    }
   }
+
 
   .message-card:hover {
     background: linear-gradient(

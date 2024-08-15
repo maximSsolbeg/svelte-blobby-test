@@ -34,7 +34,7 @@
       box.getCenter(center);
       model.position.sub(center);
 
-      model.scale.set(1.75, 1.75, 1.75);
+      model.scale.set(1.85, 1.85, 1.85);
 
       model.rotation.x = Math.PI / 6;
       model.rotation.z = Math.PI / 12;

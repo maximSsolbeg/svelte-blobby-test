@@ -2,6 +2,7 @@
   import { Icon } from "../components";
 
   export let placeholder = "Send a message";
+  export let className = '';
 
   let message = "";
 </script>
@@ -9,7 +10,7 @@
 <div class="input-container">
     <input type="text"
            {placeholder}
-           class="message-input"
+           class={`message-input ${className}`}
            bind:value={message}
     />
     <button class="message-input__send-button">

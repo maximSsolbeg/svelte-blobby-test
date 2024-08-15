@@ -28,12 +28,12 @@
   .header {
     display: flex;
     justify-content: space-between;
-    padding: 12px 36px 20px;
+    padding: 10px 36px 20px;
   }
 
   .header__logo {
     margin-right: 116px;
-    padding-top: 6px;
+    padding-top: 8px;
   }
 
   .header__left {

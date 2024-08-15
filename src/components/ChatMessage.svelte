@@ -1,5 +1,23 @@
 <script>
-  import { ThreeDScene } from "../components";
+  import {ThreeDScene} from "../components";
+  import {onMount} from "svelte";
+
+  let text = "How can I help you?";
+  let displayedText = "";
+  let typingSpeed = 100;
+
+  onMount(() => {
+    let index = 0;
+
+    const typeWriter = setInterval(() => {
+      if (index < text.length) {
+        displayedText += text[index];
+        index++;
+      } else {
+        clearInterval(typeWriter);
+      }
+    }, typingSpeed);
+  });
 </script>
 
 <div class="chat-message">
@@ -11,7 +29,7 @@
 
     <div class="chat-message__bubble">
         <div class="chat-message__name">Hi! I'm Blobby</div>
-        <div class="chat-message__text">How can I help you?</div>
+        <div class="chat-message__text">{displayedText}</div>
     </div>
 </div>
 
@@ -24,6 +42,9 @@
     line-height: 34px;
     max-width: calc(100% - 200px);
     margin-bottom: 82px;
+    @include desktopSmall {
+      margin-bottom: 60px;
+    }
   }
 
   .chat-message__icon {
@@ -37,14 +58,18 @@
   .chat-message__bubble {
     @include spaceGrotesk(500);
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 74px 74px 74px 18px;
-    padding: 26px 40px;
+    border-radius: 92px 74px 74px 18px;
+    padding: 26px 53px;
+    min-width: 332px;
   }
 
   .chat-message__name {
     font-size: 28px;
     color: var(--white-opacity-40);
     margin-bottom: 4px;
+    @include desktopSmall {
+      margin-bottom: 0;
+    }
   }
 
   .chat-message__text {
@@ -53,7 +78,7 @@
   }
 
   :global(.chat-message__model) {
-    margin-right: 20px;
+    margin-right: 24px;
   }
 
 </style>

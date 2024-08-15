@@ -15,7 +15,12 @@ $white-opacity-1:  #f0f0f01a; // rgba(240, 240, 240, 0.1)
 $white-opacity-3:  #FFFFFF08; // rgba(240, 240, 240, 0.03)
 
 $grey: #D3CCE0;
-
 $purple: #7D42EC;
 $purple-darker: darken($purple, 10%);
 $purple-thin: #E8CEFF0D;
+
+// screen size
+$desktop-large: 1360px;
+$desktop-small : 1025px;
+$tablet: 768px;
+$mobile: 400px;

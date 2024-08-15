@@ -1,3 +1,5 @@
+@import 'variables';
+
 @mixin spaceGrotesk($weight: 400) {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: $weight;
@@ -6,4 +8,22 @@
 @mixin instrumentSans($weight: 400) {
   font-family: 'Instrument Sans', sans-serif;
   font-weight: $weight;
+}
+
+@mixin desktopSmall {
+  @media (min-width: #{$desktop-small}) and (max-width: #{$desktop-large - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop-small - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1px}) {
+    @content;
+  }
 }
