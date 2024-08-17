@@ -80,5 +80,4 @@
   :global(.chat-message__model) {
     margin-right: 24px;
   }
-
 </style>
