@@ -1,6 +1,9 @@
 <script lang="ts">
 import { Header, HeroSection, JoinSection } from "../components";
+</script>
 
+<script context="module">
+  export const prerender = true;
 </script>
 
 <div class="global-container" >
