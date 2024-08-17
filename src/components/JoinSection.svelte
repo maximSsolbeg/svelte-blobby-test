@@ -160,10 +160,4 @@
       background-color: var(--white-opacity-60);
     }
   }
-
-  .join-section__image {
-    height: 400px;
-    width: 400px;
-    border: dashed 2px purple;
-  }
 </style>

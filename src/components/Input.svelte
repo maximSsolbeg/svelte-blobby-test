@@ -54,10 +54,6 @@
         }
     }
 
-    .message-input:focus .input-container{
-      background-color: var(--white-opacity-15);
-    }
-
     .message-input__send-button {
         background-color: var(--white);
         border: none;

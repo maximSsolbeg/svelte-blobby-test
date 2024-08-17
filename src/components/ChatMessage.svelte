@@ -47,14 +47,6 @@
     }
   }
 
-  .chat-message__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-right: 12px;
-    border: solid 1px red;
-  }
-
   .chat-message__bubble {
     @include spaceGrotesk(500);
     background-color: rgba(255, 255, 255, 0.05);

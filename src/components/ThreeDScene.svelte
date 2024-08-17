@@ -2,18 +2,18 @@
   import * as THREE from 'three';
   import {onMount} from 'svelte';
   import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+  import { base } from '$app/paths';
 
   export let rotate = true;
   export let diameter = 380;
   export let className = '';
 
-  let container;
-  let model;
+  let container, model, scene, camera, renderer;
 
   onMount(() => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
@@ -26,7 +26,7 @@
     scene.add(directionalLight);
 
     const loader = new GLTFLoader();
-    loader.load('public/assets/Airless.glb', (gltf) => {
+    loader.load(`${base}/assets/Airless.glb`, (gltf) => {
       model = gltf.scene;
 
       const box = new THREE.Box3().setFromObject(model);
@@ -68,11 +68,20 @@
       camera.updateProjectionMatrix();
     });
   });
+
+  $: if (container) {
+    container.style.width = `${diameter}px`;
+    container.style.height = `${diameter}px`;
+    if (renderer) {
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+    }
+  }
 </script>
 
 <div bind:this={container}
-     class={`three-container ${className}`}
-     style={`width: ${diameter}px; height: ${diameter}px;`}>
+     class={`three-container ${className}`}>
 </div>
 
 <style>

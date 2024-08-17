@@ -38,7 +38,7 @@
             </button>
         </div>
 
-        <ThreeDScene className="hero-section__model" diameter={screenWidth > 1360 ? 380 : 316}/>
+        <ThreeDScene className="hero-section__model" diameter={screenWidth > 1359 ? 380 : 316}/>
 
         <div class="hero-section__header-right">
             <p>{description}</p>
@@ -60,7 +60,7 @@
                     rgba(255, 255, 255, 0.04),
                     rgba(125, 66, 236, 0.04)
     ),
-    url('public/assets/highlight.png');
+    url('/assets/highlight.png');
 
     background-size: contain;
     background-repeat: no-repeat;

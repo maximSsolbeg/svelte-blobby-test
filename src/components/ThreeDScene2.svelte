@@ -2,6 +2,7 @@
   import * as THREE from 'three';
   import {onMount} from 'svelte';
   import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+  import { base } from '$app/paths';
 
   export let rotate = true;
   export let diameter = 500;
@@ -26,7 +27,7 @@
     scene.add(directionalLight);
 
     const loader = new GLTFLoader();
-    loader.load('public/assets/diamond.glb', (gltf) => {
+    loader.load(`${base}/assets/diamond.glb`, (gltf) => {
       model = gltf.scene;
 
       const box = new THREE.Box3().setFromObject(model);
