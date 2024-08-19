@@ -1,26 +1,10 @@
 <script>
   import {Icon, Chat, ThreeDScene} from "../components";
-  import { onMount } from "svelte";
+  import {useScreenWidth} from "../utils/useScreenWidth";
 
+  const screenWidth = useScreenWidth();
   const description = `The first uncensored, bias-free conversational AI agent
             based on a decentralized framework and owned by the people.`;
-
-  let screenWidth;
-
-  onMount(() => {
-    screenWidth = window.innerWidth;
-
-    const updateWidth = () => {
-      screenWidth = window.innerWidth;
-    };
-
-    window.addEventListener('resize', updateWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateWidth);
-    };
-  });
-
 </script>
 
 <section class="hero-section">
@@ -28,9 +12,11 @@
         <div class="hero-section__header-left">
             <div>
                 <h1>The first AI owned by the people</h1>
-                <div class="hero-section__header-right desktop-small">
-                    <p>{description}</p>
-                </div>
+                {#if $screenWidth < 1360}
+                    <div class="hero-section__header-right">
+                        <p>{description}</p>
+                    </div>
+                {/if}
             </div>
             <button class="button button-text button-icon">
                 <Icon name="arrow-down-btn" width="24" height="24" class="hero-section__logo-icon"/>
@@ -38,11 +24,13 @@
             </button>
         </div>
 
-        <ThreeDScene className="hero-section__model" diameter={screenWidth > 1359 ? 380 : 316}/>
+        <ThreeDScene className="hero-section__model" diameter={$screenWidth > 1359 ? 380 : 316}/>
 
-        <div class="hero-section__header-right">
-            <p>{description}</p>
-        </div>
+        {#if $screenWidth > 1359}
+            <div class="hero-section__header-right">
+                <p>{description}</p>
+            </div>
+        {/if}
     </div>
 
     <Chat/>
@@ -65,6 +53,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top right;
+    @include tablet {
+      padding: 12px;
+    }
+    @include mobile {
+      padding: 12px;
+    }
 
     h1 {
       font-size: 54.17px;
@@ -75,6 +69,18 @@
         font-size: 40px;
         line-height: 48px;
         width: 360px;
+      }
+    ;
+      @include tablet {
+        font-size: 40px;
+        line-height: 48px;
+        width: 336px;
+      }
+    ;
+      @include mobile {
+        font-size: 40px;
+        line-height: 48px;
+        width: 336px;
       }
     }
   }
@@ -91,14 +97,31 @@
       height: 316px;
       padding: 76px 68px 72px;
     }
+    @include tablet {
+      padding: 61px 40px 72px;
+      min-height: 355px;
+    }
+    @include mobile {
+      padding: 61px 40px 72px;
+      min-height: 355px;
+    }
 
     p {
       width: 491px;
       opacity: 0.6;
       font-size: 20px;
+      line-height: 31px;
       margin-bottom: 0;
       @include desktopSmall {
         width: 510px;
+      }
+      @include tablet {
+        margin-top: 25px;
+        width: 300px;
+      }
+      @include mobile {
+        margin-top: 25px;
+        width: 300px;
       }
     }
   }
@@ -121,13 +144,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    @include desktopSmall {
-      display: none;
-    }
-  }
-
-  .hero-section__header-right.desktop-small {
-    display: none;
     @include desktopSmall {
       display: flex;
       margin-top: 4px;
@@ -175,7 +191,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @include desktopSmall {
-      left: 72%;
+      left: 73%;
+    }
+    @include tablet {
+      left: 73%;
     }
   }
 </style>

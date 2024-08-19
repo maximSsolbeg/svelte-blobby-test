@@ -19,7 +19,7 @@
   .message-card {
     cursor: pointer;
     @include instrumentSans(400);
-    height: 197px;
+    min-height: 197px;
     flex: 1;
     border-radius: 28px;
     padding: 27px 36px 45px;
@@ -31,6 +31,16 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: left;
+    @include tablet {
+      flex: 0 0 209px;
+      padding: 8px 26px 31px;
+      min-height: 229px;
+    }
+    @include mobile {
+      flex: 0 0 209px;
+      padding: 8px 26px 31px;
+      min-height: 229px;
+    }
 
     p {
       @include desktopSmall {

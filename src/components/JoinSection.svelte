@@ -1,24 +1,9 @@
 <script>
   import {ThreeDScene2} from "../components";
-  import {onMount} from "svelte";
+  import {useScreenWidth} from "../utils/useScreenWidth";
 
+  const screenWidth = useScreenWidth();
   const description = `Provide computational power to the Blobby AI infrastructure and earn rewards in $Blobby`;
-
-  let screenWidth;
-
-  onMount(() => {
-    screenWidth = window.innerWidth;
-
-    const updateWidth = () => {
-      screenWidth = window.innerWidth;
-    };
-
-    window.addEventListener('resize', updateWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateWidth);
-    };
-  });
 </script>
 
 <section class="join-section">
@@ -46,7 +31,7 @@
             <div class="join-section__cta-buttons">
                 <button class="button button-filled join-section__cta-btn-white">Buy Node License</button>
                 <button class="button button-filled">
-                    {#if screenWidth > 1359}
+                    {#if $screenWidth > 1359}
                         Learn more about Nodes
                     {:else}
                         Get started
@@ -56,7 +41,9 @@
         </div>
     </div>
 
-    <ThreeDScene2/>
+    {#if $screenWidth > 1024}
+        <ThreeDScene2/>
+    {/if}
 </section>
 
 <style lang="scss">
@@ -69,8 +56,16 @@
     padding: 110px 100px 100px;
     height: 507px;
     @include desktopSmall {
-      padding: 98px 89px 100px;
-      height: 450px;
+      padding: 96px 89px 100px;
+      height: 451px;
+    }
+    @include tablet {
+      padding: 73px 52px 100px;
+      height: 377px;
+    }
+    @include mobile {
+      padding: 73px 52px 100px;
+      height: 377px;
     }
   }
 
@@ -85,7 +80,12 @@
     border-right: solid 1px var(--white-opacity-15);
     padding: 0 78px 0 5px;
     @include desktopSmall {
-      padding-right: 70px;
+      padding-right: 80px;
+      line-height: 22px;
+    }
+    @include tablet {
+      padding-right: 80px;
+      line-height: 22px;
     }
   }
 
@@ -100,21 +100,18 @@
     @include desktopSmall {
       gap: 15px;
     }
-  }
 
-  .join-section__cta-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-start;
-    margin-top: 44px;
-  }
-
-  .join-section__step {
     h4 {
       @include spaceGrotesk(400);
       font-size: 17px;
       color: var(--white-opacity-60);
       margin-bottom: 2px;
+      @include desktopSmall{
+        font-size: 14px;
+      }
+      @include tablet{
+        font-size: 14px;
+      }
     }
 
     p {
@@ -122,6 +119,26 @@
       font-size: 18px;
       color: var(--white-primary);
       margin: 0;
+      @include desktopSmall{
+        font-size: 16px;
+      }
+      @include tablet{
+        font-size: 16px;
+      }
+    }
+
+  }
+
+  .join-section__cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-top: 44px;
+    @include desktopSmall {
+      margin-top: 48px;
+    }
+    @include tablet {
+      margin-top: 48px;
     }
   }
 
@@ -132,6 +149,16 @@
     color: var(--white-primary);
     margin-bottom: 24px;
     @include desktopSmall {
+      font-size: 36px;
+      line-height: 43.2px;
+      margin-bottom: 11px;
+    }
+    @include tablet {
+      font-size: 36px;
+      line-height: 43.2px;
+      margin-bottom: 11px;
+    }
+    @include mobile {
       font-size: 36px;
       line-height: 43.2px;
       margin-bottom: 11px;
@@ -149,6 +176,18 @@
       line-height: 24.8px;
       margin-top: 0;
       width: 334px;
+    }
+    @include tablet {
+      font-size: 16px;
+      line-height: 24.8px;
+      margin-top: 0;
+      width: 300px;
+    }
+    @include mobile {
+      font-size: 16px;
+      line-height: 24.8px;
+      margin-top: 0;
+      width: 300px;
     }
   }
 

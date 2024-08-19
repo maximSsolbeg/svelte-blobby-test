@@ -1,6 +1,9 @@
 <script>
-  import { ChatMessage, MessageCard, Input } from "../components";
-  import { onMount } from 'svelte';
+  import {ChatMessage, MessageCard, Input} from "../components";
+  import {onMount} from 'svelte';
+  import {useScreenWidth} from "../utils/useScreenWidth";
+
+  const screenWidth = useScreenWidth();
 
   const cards = [
     {
@@ -61,73 +64,120 @@
 <div class:chat__container-bg={showBackgroundAndButton}
      class={`chat__container ${showChatMessage || showCardsAndInput ? 'show' : ''}`}>
     <div class={`chat__container-header ${showChatMessage ? 'show' : ''}`}>
-        <ChatMessage />
+        <ChatMessage/>
 
-        <button class:disabled={!showBackgroundAndButton}
-                class="button button-filled">
-            Full-screen version
-        </button>
+        {#if $screenWidth > 1024}
+            <button class:disabled={!showBackgroundAndButton}
+                    class="button button-filled">
+                Full-screen version
+            </button>
+        {/if}
     </div>
 
     <div class={`chat__cards-container ${showCardsAndInput ? 'show' : ''}`}>
         {#each cards as card}
-            <MessageCard text={card.text} iconName={card.iconName} />
+            <MessageCard text={card.text} iconName={card.iconName}/>
         {/each}
     </div>
 
 
     <div class="chat__input" class:show={showCardsAndInput}>
-        <Input placeholder="Send a message" />
+        <Input placeholder="Send a message"/>
     </div>
+
+    {#if $screenWidth < 1025}
+        <button class:disabled={!showBackgroundAndButton}
+                class="button button-text chat__button-empty">
+            Full-screen version
+        </button>
+    {/if}
 </div>
 
 <style lang="scss">
-    @import '../styles/_mixins.scss';
+  @import '../styles/_mixins.scss';
 
-    .chat__container{
-      padding: 100px 80px;
-      border-radius: 28px;
-      background-color: transparent;
-      transition: opacity 1s;
-      @include desktopSmall {
-        padding: 61px 69px;
+  .chat__container {
+    padding: 100px 80px;
+    border-radius: 28px;
+    background-color: transparent;
+    transition: opacity 1s;
+    @include desktopSmall {
+      padding: 61px 69px;
+    }
+    @include tablet {
+      padding: 62px 40px 58px;
+    }
+    @include mobile {
+      padding: 62px 40px 58px;
+    }
+  }
+
+  .disabled {
+    display: none;
+  }
+
+  .chat__container-bg {
+    background-color: var(--purple-thin);
+  }
+
+  .chat__container-header,
+  .chat__cards-container,
+  .chat__input {
+    transition: opacity 1s;
+    opacity: 0;
+  }
+
+  .chat__container-header.show {
+    opacity: 1;
+  }
+
+  .chat__cards-container.show,
+  .chat__input.show {
+    opacity: 1;
+  }
+
+  .chat__container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .chat__cards-container {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 42px;
+    @include tablet {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
+    @include mobile {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
 
-    .disabled {
-      display: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
+  }
 
-    .chat__container-bg {
-      background-color: var(--purple-thin);
-    }
+  .chat__button-empty {
+    padding: 0;
+    margin-top: 47px;
+    height: auto;
 
-    .chat__container-header,
-    .chat__cards-container,
-    .chat__input {
-      transition: opacity 1s;
-      opacity: 0;
+    &:focus {
+      background-color: transparent;
+      text-decoration: underline;
+      outline: none;
+      border: none;
+      padding: 0;
     }
-
-    .chat__container-header.show {
-      opacity: 1;
-    }
-
-    .chat__cards-container.show,
-    .chat__input.show {
-      opacity: 1;
-    }
-
-    .chat__container-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .chat__cards-container {
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      margin-bottom: 42px;
-    }
+  }
 </style>

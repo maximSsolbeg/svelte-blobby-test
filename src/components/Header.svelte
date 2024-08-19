@@ -22,7 +22,7 @@
         {#if $screenWidth <= desktopSmall}
             <div class="header__dropdown-wrapper">
                 <button class="button button-text button-burger" on:click={toggleMenu}>
-                    <Icon name="burger" width="32" height="32" />
+                    <Icon name="burger" width="24" height="24" />
                 </button>
                 {#if isMenuOpen}
                     <div class="header__dropdown">
@@ -57,6 +57,9 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 36px 20px;
+    @include tablet {
+      padding: 4px 7px 16px 16px;
+    }
   }
 
   .header__logo {
@@ -80,6 +83,11 @@
     justify-content: space-between;
     @include tablet {
       justify-content: flex-end;
+      width: auto;
+    }
+    @include mobile {
+      justify-content: flex-end;
+      width: auto;
     }
   }
 
@@ -90,6 +98,9 @@
   .button.button-text.button-burger {
     padding: 8px;
     border-right: 8px;
+    @include tablet {
+      padding: 12px 9px;
+    }
   }
 
   .header__dropdown-wrapper {

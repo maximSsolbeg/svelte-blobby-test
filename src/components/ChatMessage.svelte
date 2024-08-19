@@ -45,23 +45,28 @@
     @include desktopSmall {
       margin-bottom: 60px;
     }
+    @include tablet {
+      max-width: 100%;
+      margin-bottom: 59px;
+    }
+    @include mobile {
+      max-width: 100%;
+      margin-bottom: 59px;
+    }
   }
 
   .chat-message__bubble {
     @include spaceGrotesk(500);
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 92px 74px 74px 18px;
-    padding: 26px 53px;
+    padding: 24px 53px;
     min-width: 332px;
+    line-height: 35.7px;
   }
 
   .chat-message__name {
     font-size: 28px;
     color: var(--white-opacity-40);
-    margin-bottom: 4px;
-    @include desktopSmall {
-      margin-bottom: 0;
-    }
   }
 
   .chat-message__text {
