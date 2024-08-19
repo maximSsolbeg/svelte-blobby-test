@@ -41,8 +41,10 @@
         </div>
     </div>
 
-    {#if $screenWidth > 1024}
-        <ThreeDScene2/>
+    {#if $screenWidth > 767}
+        <div class="join-section__madel-wrapper">
+            <ThreeDScene2/>
+        </div>
     {/if}
 </section>
 
@@ -60,11 +62,12 @@
       height: 451px;
     }
     @include tablet {
+      position: relative;
       padding: 73px 52px 100px;
       height: 377px;
     }
     @include mobile {
-      padding: 73px 52px 100px;
+      padding: 43px 16px 66px;
       height: 377px;
     }
   }
@@ -87,6 +90,9 @@
       padding-right: 80px;
       line-height: 22px;
     }
+    @include mobile {
+      padding: 0 10px 0 0;
+    }
   }
 
   .join-section__step.no-border {
@@ -106,11 +112,14 @@
       font-size: 17px;
       color: var(--white-opacity-60);
       margin-bottom: 2px;
-      @include desktopSmall{
+      @include desktopSmall {
         font-size: 14px;
       }
-      @include tablet{
+      @include tablet {
         font-size: 14px;
+      }
+      @include tablet {
+        font-size: 13px;
       }
     }
 
@@ -119,11 +128,14 @@
       font-size: 18px;
       color: var(--white-primary);
       margin: 0;
-      @include desktopSmall{
+      @include desktopSmall {
         font-size: 16px;
       }
-      @include tablet{
+      @include tablet {
         font-size: 16px;
+      }
+      @include tablet {
+        font-size: 15px;
       }
     }
 
@@ -197,6 +209,13 @@
 
     &:hover {
       background-color: var(--white-opacity-60);
+    }
+  }
+
+  .join-section__madel-wrapper {
+    @include tablet {
+      position: absolute;
+      left: 66%;
     }
   }
 </style>

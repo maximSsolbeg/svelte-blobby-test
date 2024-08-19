@@ -106,9 +106,11 @@
     }
     @include tablet {
       padding: 62px 40px 58px;
+      min-height: 642px;
     }
     @include mobile {
-      padding: 62px 40px 58px;
+      padding: 23px 20px 58px;
+      min-height: 588px;
     }
   }
 

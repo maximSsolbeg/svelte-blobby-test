@@ -1,6 +1,9 @@
 <script>
   import {ThreeDScene} from "../components";
   import {onMount} from "svelte";
+  import {useScreenWidth} from "../utils/useScreenWidth";
+
+  const screenWidth = useScreenWidth();
 
   let text = "How can I help you?";
   let displayedText = "";
@@ -21,11 +24,13 @@
 </script>
 
 <div class="chat-message">
-    <ThreeDScene
-            rotate={false}
-            diameter="124"
-            className="chat-message__model"
-    />
+    <div class="chat-message__model-wrapper">
+        <ThreeDScene
+                rotate={false}
+                diameter={$screenWidth < 769 ? 70 : 124}
+                className="chat-message__model"
+        />
+    </div>
 
     <div class="chat-message__bubble">
         <div class="chat-message__name">Hi! I'm Blobby</div>
@@ -62,16 +67,29 @@
     padding: 24px 53px;
     min-width: 332px;
     line-height: 35.7px;
+    @include mobile {
+      min-width: initial;
+      padding: 12px 32px;
+      width: 100%;
+    }
   }
 
   .chat-message__name {
     font-size: 28px;
     color: var(--white-opacity-40);
+    @include mobile {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 
   .chat-message__text {
     font-size: 28px;
     color: var(--white);
+    @include mobile {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 
   :global(.chat-message__model) {

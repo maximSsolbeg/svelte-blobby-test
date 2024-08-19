@@ -99,11 +99,11 @@
     }
     @include tablet {
       padding: 61px 40px 72px;
-      min-height: 355px;
+      height: 355px;
     }
     @include mobile {
-      padding: 61px 40px 72px;
-      min-height: 355px;
+      padding: 50px 20px 61px;
+      height: 768px;
     }
 
     p {
@@ -122,6 +122,8 @@
       @include mobile {
         margin-top: 25px;
         width: 300px;
+        font-size: 17px;
+        line-height: 26px;
       }
     }
   }
@@ -135,6 +137,9 @@
     align-items: flex-start;
     @include desktopSmall {
       height: 100%;
+    }
+    @include mobile {
+      width: 100%;
     }
   }
 
@@ -157,6 +162,10 @@
     gap: 17px;
     padding: 0;
     height: auto;
+    @include mobile {
+      flex-direction: column-reverse;
+      align-self: center;
+    }
 
     &:hover {
       color: var(--white);
@@ -195,6 +204,9 @@
     }
     @include tablet {
       left: 73%;
+    }
+    @include mobile {
+      top: 61%;
     }
   }
 </style>

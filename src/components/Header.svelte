@@ -1,20 +1,24 @@
 <script>
-    import { Icon } from "../components";
-    import { useScreenWidth } from "../utils/useScreenWidth";
-    import { desktopSmall } from "../utils/screenSize";
+  import {Icon} from "../components";
+  import {useScreenWidth} from "../utils/useScreenWidth";
+  import {desktopSmall} from "../utils/screenSize";
 
-    const screenWidth = useScreenWidth();
-    let isMenuOpen = false;
+  const screenWidth = useScreenWidth();
+  let isMenuOpen = false;
 
-    function toggleMenu() {
-      isMenuOpen = !isMenuOpen;
-    }
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+  }
 </script>
 
 <div class="header">
     <div class="header__logo">
         <a href="#">
-            <Icon name="logo" width="32" height="32" />
+            {#if $screenWidth > 767}
+                <Icon name="logo" width="32" height="32"/>
+            {:else}
+                <Icon name="logo" width="28" height="28"/>
+            {/if}
         </a>
     </div>
 
@@ -59,6 +63,9 @@
     padding: 10px 36px 20px;
     @include tablet {
       padding: 4px 7px 16px 16px;
+    }
+    @include mobile {
+      padding: 4px 8px 11px 16px
     }
   }
 

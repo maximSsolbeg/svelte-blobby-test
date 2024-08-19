@@ -31,6 +31,9 @@
         border-radius: 60px;
         border: 1px solid var(--white-opacity-15);
         padding: 0 20px 0 37px;
+        @include mobile {
+          justify-content: center;
+        }
 
         &:focus-within {
             background-color: var(--white-opacity-5);
